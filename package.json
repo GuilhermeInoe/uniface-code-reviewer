@@ -9,12 +9,17 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": ["*"],
   "main": "./extension.js",
   "contributes": {
     "commands": [{
       "command": "uniface-code-reviewer.helloWorld",
       "title": "Hello World"
+    }],
+  "languages": [{
+        "id": "uniface",
+        "aliases": ["Uniface", "uniface"],
+        "extensions": [".proc", ".uniface"]
     }]
   },
   "scripts": {
