@@ -18,7 +18,7 @@ function getDiagnostics(document) {
         while ((match = regex.exec(text))) {
             const startPosIndex = match.index;
             
-            // Verifica validação extra (ex: o caso do $scan)
+            // Verifica validação extra (o caso do $scan)
             if (rule.validator) {
                 const shouldReport = rule.validator(match, text, startPosIndex);
                 if (!shouldReport) continue;
