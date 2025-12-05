@@ -4,7 +4,7 @@ const rules = [
     {
         id: 'no-goto',
         regex: /\b(GOTO)\b/gi,
-        message: 'Atenção: O uso do GOTO não é recomendado!',
+        message: 'Atenção: O uso do GOTO não é recomendado',
         severity: vscode.DiagnosticSeverity.Warning
     },
 
@@ -29,7 +29,7 @@ const rules = [
         regex: /\b(activate|call)\b/gi,
         
         message: 'Ao usar um comando call ou activate, adicione a tratativa de erros',
-        severity: vscode.DiagnosticSeverity.Warning,
+        severity: vscode.DiagnosticSeverity.Error,
 
         validator: (match, text, startIndex) => {
             // match[0] é a palavra encontrada (activate ou call)

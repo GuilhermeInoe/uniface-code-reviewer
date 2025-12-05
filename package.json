@@ -1,26 +1,47 @@
 {
   "name": "uniface-code-reviewer",
   "displayName": "Uniface Code Reviewer",
-  "description": "",
+  "description": "Linter e Snippets para Uniface",
   "version": "0.0.1",
+  "publisher": "SeuNomeOuEmpresa",
   "engines": {
-    "vscode": "^1.106.1"
+    "vscode": "^1.90.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages",
+    "Linters",
+    "Snippets"
   ],
-  "activationEvents": ["*"],
+  "activationEvents": [
+    "*"
+  ],
   "main": "./src/extension.js",
   "contributes": {
-    "commands": [{
-      "command": "uniface-code-reviewer.helloWorld",
-      "title": "Hello World"
-    }],
-  "languages": [{
+    "commands": [
+      {
+        "command": "uniface-code-reviewer.helloWorld",
+        "title": "Hello World"
+      }
+    ],
+    "languages": [
+      {
         "id": "uniface",
-        "aliases": ["Uniface", "uniface"],
-        "extensions": [".proc", ".uniface"]
-    }]
+        "aliases": [
+          "Uniface",
+          "uniface"
+        ],
+        "extensions": [
+          ".proc",
+          ".uniface"
+        ]
+      }
+    ],
+    "snippets": [
+      {
+        "language": "uniface",
+        "path": "./snippets/uniface.json"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
@@ -28,11 +49,11 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.106.1",
+    "@types/vscode": "^1.90.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "22.x",
-    "eslint": "^9.39.1",
-    "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2"
+    "@types/node": "20.x",
+    "eslint": "^9.1.1",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9"
   }
 }

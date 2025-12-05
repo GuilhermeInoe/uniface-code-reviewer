@@ -26,7 +26,6 @@ function getDiagnostics(document) {
 
             const startPos = document.positionAt(startPosIndex);
             const endPos = document.positionAt(startPosIndex + match[0].length);
-
             const diagnostic = new vscode.Diagnostic(
                 new vscode.Range(startPos, endPos),
                 rule.message,

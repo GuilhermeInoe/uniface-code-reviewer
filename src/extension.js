@@ -7,7 +7,7 @@ function activate(context) {
     const diagnosticCollection = vscode.languages.createDiagnosticCollection('uniface-engine');
     context.subscriptions.push(diagnosticCollection);
 
-    // Função que conecta o VS Code ao nosso motor
+    //função que conecta o VS Code ao motor
     const handleDocument = (document) => {
 
         if (document?.languageId !== "uniface") {
@@ -18,7 +18,7 @@ function activate(context) {
         diagnosticCollection.set(document.uri, diagnostics);
     };
 
-    // Registra os eventos
+    //registra os eventos
     if (vscode.window.activeTextEditor) {
         handleDocument(vscode.window.activeTextEditor.document);
     }

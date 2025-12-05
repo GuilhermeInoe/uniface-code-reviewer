@@ -1,0 +1,23 @@
+{
+    "Entry Uniface": {
+        "prefix": "entry",
+        "body": [
+            "entry ${1:plNomeDaPl}",
+            "\tparams",
+            "\t\t${2:string pLsEntrada : IN}",
+            "\t\t${2:string pLsSaida   : OUT}",
+            "\tendparams",
+            "\tvariables",
+            "\t\t${3:string vDsContexto}",
+            "\tendvariables",
+            "",
+            "\tvDsContexto = \"%%^%%%(<$componentname>, plNomeDaPl)\"",
+            "",
+            "\t${4:; Seu código aqui}",
+            "",
+            "\treturn(0)",
+            "end;plNomeDaPl"
+        ],
+        "description": "Corpo da PL"
+    }
+}
