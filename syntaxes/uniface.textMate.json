@@ -1,0 +1,69 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Uniface",
+    "patterns": [
+        {
+            "comment": "Comentários iniciados por ponto e vírgula",
+            "name": "comment.line.semicolon.uniface",
+            "match": ";.*$"
+        },
+        {
+            "comment": "Strings entre aspas duplas",
+            "name": "string.quoted.double.uniface",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.uniface",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        {
+            "comment": "Comandos de Controle (if, while, entry...)",
+            "name": "keyword.control.uniface",
+            "match": "\\b(if|else|endif|while|endwhile|repeat|until|entry|end|return|break|scan|call|activate|perform|operation)\\b"
+        },
+        {
+            "comment": "Blocos de Declaração",
+            "name": "storage.type.class.uniface",
+            "match": "\\b(params|endparams|variables|endvariables)\\b"
+        },
+        {
+            "comment": "Tipos de Dados",
+            "name": "storage.type.uniface",
+            "match": "\\b(string|numeric|float|date|datetime|time|boolean|handle)\\b"
+        },
+        {
+            "comment": "Variáveis de Sistema ($status, $procerror)",
+            "name": "support.variable.uniface",
+            "match": "\\$[a-zA-Z0-9_]+\\b"
+        },
+        {
+            "comment": "--- NOVA REGRA: Parâmetros iniciados com p (ex: pEntrada) ---",
+            "name": "variable.parameter.uniface",
+            "match": "\\bp[A-Z][a-zA-Z0-9_]*\\b"
+        },
+        {
+            "comment": "--- NOVA REGRA: Variáveis iniciadas com v (ex: vNome) ---",
+            "name": "variable.other.readwrite.uniface",
+            "match": "\\bv[A-Z][a-zA-Z0-9_]*\\b"
+        },
+        {
+            "comment": "--- NOVA REGRA: Chamadas de Métodos (ex: .fazerAlgo) ---",
+            "name": "entity.name.function.member.uniface",
+            "match": "\\.([a-zA-Z0-9_]+)(?=\\()"
+        },
+        {
+            "comment": "Números",
+            "name": "constant.numeric.uniface",
+            "match": "\\b[0-9]+\\b"
+        },
+        {
+            "comment": "Operadores Lógicos e Comparação",
+            "name": "keyword.operator.uniface",
+            "match": "(==|!=|<=|>=|<|>|=|\\+|\\-|\\*|/|&|\\|)"
+        }
+    ],
+    "scopeName": "source.uniface"
+}

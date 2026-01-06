@@ -1,9 +1,9 @@
 {
   "name": "uniface-code-reviewer",
   "displayName": "Uniface Code Reviewer",
-  "description": "Linter e Snippets para Uniface",
+  "description": "linter e Snippets para Uniface",
   "version": "0.0.1",
-  "publisher": "SeuNomeOuEmpresa",
+  "publisher": "guilherme",
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -35,6 +35,13 @@
           ".uniface"
         ]
       }
+    ],
+    "grammars": [
+        {
+            "language": "uniface",
+            "scopeName": "source.uniface",
+            "path": "./syntaxes/uniface.textMate.json"
+        }
     ],
     "snippets": [
       {

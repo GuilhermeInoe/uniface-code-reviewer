@@ -57,6 +57,41 @@ const rules = [
             }
             return true;
         }
+    },
+
+    {
+        id: 'unused-variable',
+        // REGEX ALTERADA: Pega qualquer palavra que pareça uma variável (letra + alfanuméricos)
+        regex: /\b([a-zA-Z][a-zA-Z0-9_]*)\b/g, 
+        message: 'Variável declarada mas não utilizada.',
+        severity: vscode.DiagnosticSeverity.Information,
+
+        validator: (match, text, startIndex) => {
+            const word = match[0];
+
+            const ignoredWords = [
+                'variables', 'endvariables', 'params', 'endparams', 
+                'string', 'numeric', 'date', 'datetime', 'time', 'float', 'boolean',
+                'entry', 'end', 'detail', 'if', 'else', 'endif', 'while', 'endwhile'
+            ];
+            if (ignoredWords.includes(word.toLowerCase())) return false;
+
+            const blockStart = text.lastIndexOf('variables', startIndex);
+            const blockEnd = text.indexOf('endvariables', startIndex);
+
+            if (blockStart === -1 || blockEnd === -1 || blockEnd < startIndex) {
+                return false; 
+            }
+
+            const usageRegex = new RegExp(`\\b${word}\\b`, 'g');
+            const matches = text.match(usageRegex);
+
+            if (matches && matches.length === 1) {
+                return true;
+            }
+
+            return false;
+        }
     }
 ];
 
