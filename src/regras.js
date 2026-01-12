@@ -24,6 +24,20 @@ const rules = [
         }
     },
 
+        {
+        id: 'lenght-check',
+        regex: /\b(lenght)\b/gi,
+        message: 'Atenção: Remova comandos deprecados (lenght). Utilize $lenght()',
+        severity: vscode.DiagnosticSeverity.Warning,
+
+        validator: (match, text, startIndex) => {
+            if (startIndex > 0 && text.charAt(startIndex - 1) === '$') {
+                return false;
+            }
+            return true;
+        }
+    },
+
     {
         id: 'check-status-after-call',
         regex: /\b(activate|call)\b/gi,
@@ -97,10 +111,11 @@ const rules = [
     {
         id: 'deprecated-commands',
         regex: /\b(fieldvideo|fieldsyntax)\b/g,
-        message: 'Comando descontinuado. Utilize a versão com $ (Ex.: $fieldvideo, $fieldsyntax).',
+        message: 'Comando descontinuado. Utilize a versão com $ ($fieldvideo, $fieldsyntax).',
         severity: vscode.DiagnosticSeverity.Error,
 
         validator: (match, text, startIndex) => {
+
             if (startIndex > 0 && text[startIndex - 1] === '$') {
                 return false;
             }
