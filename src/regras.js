@@ -92,7 +92,21 @@ const rules = [
 
             return false;
         }
-    }
+    },
+
+    {
+        id: 'deprecated-commands',
+        regex: /\b(fieldvideo|fieldsyntax)\b/g,
+        message: 'Comando descontinuado. Utilize a versão com $ (Ex.: $fieldvideo, $fieldsyntax).',
+        severity: vscode.DiagnosticSeverity.Error,
+
+        validator: (match, text, startIndex) => {
+            if (startIndex > 0 && text[startIndex - 1] === '$') {
+                return false;
+            }
+            return true; 
+        }
+    },
 ];
 
 module.exports = rules;
